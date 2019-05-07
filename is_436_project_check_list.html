@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<head>
+  
+<link rel="stylesheet" type="text/css" href="is_436_project_check_list.css"/>
+  <style type ="text/css"></style>
+<title>Create Checklist</title> 
+</head>
+<body>
+	
+	<div class = "checkListContent">
+		
+		<div class = "linkBody">
+		<div class = "linkPosition">
+			
+			<a class = "links" href = "is_436_project_login.html">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;<!--may need to change link for AWS-->
+			<a class = "linkSelected" href = "is_436_project_check_list.html">Owner Page</a>&nbsp;&nbsp;&nbsp;&nbsp; <!--may need to change link for AWS-->
+			<a class = "links" href = "is_436_project_view_check_list.html">Manager Page</a>&nbsp;&nbsp;&nbsp;&nbsp;<!--may need to change link for AWS-->
+			<a class = "links" href = "#default">Account Settings</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a class = "links" href = "#default">Logout</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		
+		</div>
+		
+		<div class = "linkPosition2">
+			
+			<a class = "linkSelected" href = "#home">Create Checklist</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a class = "links2" href = "#default">Daily Tasks</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a class = "links2" href = "#default">Critical Reports</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a class = "links2" href = "#default">Summary Reports</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a class = "links2" href = "#default">Drive-Thru Data</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a class = "links2" href = "#default">Image Uploads</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a class = "links2" href = "#default">Messages</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a class = "links2" href = "#default">Create User</a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+		</div>
+		</div>
+		
+		<div class = "body">
+		
+			<div class="header" id="myDIV">
+			<h2>Create Checklist</h2>
+			<input class = "newTask" "type="text" id="myInput" placeholder="Enter new task...">
+			<span onclick="newElement()" class="addButton">Add</span>
+			</div>
+
+				<ul id="myUL">
+					<li>HAACP Log</li>
+					<li>Daily Food Excellence Audit</li>
+					<li>Rush Readiness Log</li>
+				</ul>		
+		
+		</div>
+	</div>
+	
+	<script>
+	var myNodelist = document.getElementsByTagName("LI");
+	var i;
+	for (i = 0; i < myNodelist.length; i++) {
+		var span = document.createElement("SPAN");
+		var txt = document.createTextNode("\u00D7");
+		span.className = "close";
+		span.appendChild(txt);
+		myNodelist[i].appendChild(span);
+	}
+
+	var close = document.getElementsByClassName("close");
+	var i;
+	for (i = 0; i < close.length; i++) {
+		close[i].onclick = function() {
+		var div = this.parentElement;
+		div.style.display = "none";
+		}		
+	}
+
+	var list = document.querySelector('ul');
+	list.addEventListener('click', function(ev) {
+	if (ev.target.tagName === 'LI') {
+		ev.target.classList.toggle('checked');
+		}
+	}, false);
+
+	function newElement() {
+	var li = document.createElement("li");
+	var inputValue = document.getElementById("myInput").value;
+	var t = document.createTextNode(inputValue);
+	li.appendChild(t);
+	if (inputValue === '') {
+		alert("You must write something!");
+		} else {
+			document.getElementById("myUL").appendChild(li);
+		}
+	document.getElementById("myInput").value = "";
+	var span = document.createElement("SPAN");
+	var txt = document.createTextNode("\u00D7");
+	span.className = "close";
+	span.appendChild(txt);
+	li.appendChild(span);
+		for (i = 0; i < close.length; i++) {
+			close[i].onclick = function() {
+			var div = this.parentElement;
+			div.style.display = "none";
+			}
+		}
+	}
+</script>
+</body>
+</html>
